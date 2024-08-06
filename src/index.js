@@ -1,3 +1,5 @@
+import { Visual } from './visual.js'
+
 class Card extends HTMLElement {
   /**
    * @public
@@ -18,11 +20,16 @@ class Card extends HTMLElement {
 
     this.innerHTML = `
       <ha-card header="Home 3D">
-        <div class="card-content">
-          <canvas></canvas>
+        <div class="card-content" style="box-sizing: border-box">
+          <div id="home-3d-outer" style="overflow: hidden; width: 100%; border-radius: 0.5rem; aspect-ratio: 2;"></div>
         </div>
       </ha-card>
     `
+
+    this.container = this.querySelector('#home-3d-outer')
+    requestAnimationFrame(() => {
+      let visual = new Visual(this.container)
+    })
   }
 
   setConfig(config) {
@@ -35,10 +42,10 @@ class Card extends HTMLElement {
 
   getLayoutOptions() {
     return {
-      grid_rows: 3,
-      grid_columns: 2,
+      grid_rows: 6,
+      grid_columns: 4,
       grid_min_rows: 3,
-      grid_max_rows: 3,
+      grid_max_rows: 6,
     }
   }
 }

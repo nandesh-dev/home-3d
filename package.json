@@ -9,8 +9,8 @@
   },
   "scripts": {
     "script:development": "nodemon --watch src/ --exec npm run build:development",
-    "build:development": "rollup src/index.js --file $npm_package_config_homeassistantDirectory/www/home-3d.js --format cjs",
-    "build:production": "rollup src/index.js --file dist/home-3d.js --format cjs",
+    "build:development": "rollup --config rollup.config.js --file $npm_package_config_homeassistantDirectory/www/home-3d.js",
+    "build:production": "rollup --config rollup.config.js",
     "format:write": "prettier . --write",
     "format:check": "prettier . --check"
   },
@@ -18,8 +18,13 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@rollup/plugin-commonjs": "^26.0.1",
+    "@rollup/plugin-node-resolve": "^15.2.3",
     "nodemon": "^3.1.4",
     "prettier": "^3.3.3",
     "rollup": "^4.20.0"
+  },
+  "dependencies": {
+    "three": "^0.167.1"
   }
 }
