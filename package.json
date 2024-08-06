@@ -1,0 +1,25 @@
+{
+  "name": "home-3d",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "type": "module",
+  "config": {
+    "homeassistantDirectory": "../../HA"
+  },
+  "scripts": {
+    "script:development": "nodemon --watch src/ --exec npm run build:development",
+    "build:development": "rollup src/index.js --file $npm_package_config_homeassistantDirectory/www/home-3d.js --format cjs",
+    "build:production": "rollup src/index.js --file dist/home-3d.js --format cjs",
+    "format:write": "prettier . --write",
+    "format:check": "prettier . --check"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^3.1.4",
+    "prettier": "^3.3.3",
+    "rollup": "^4.20.0"
+  }
+}
